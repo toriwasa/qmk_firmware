@@ -35,7 +35,7 @@ enum layer_number {
 #define KC_DELF LT(_FN, KC_DEL)
 #define LOWER_M LT(_LOWER, JP_MHEN)
 #define RAISE_H LT(_RAISE, JP_HENK)
-#define SANDS LT(KC_LSFT, KC_SPC)
+#define SFTSPC SFT_T(KC_SPC)
 
 // Move Virtual Desktop to Left/Right
 #define VD_LEFT C(G(KC_LEFT))
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT, LOWER_M,  SANDS,      KC_ENT, RAISE_H,  KC_LGUI
+                                          KC_LALT, LOWER_M, SFTSPC,     KC_ENT, RAISE_H,  KC_LGUI
                                       //`--------------------------'  `--------------------------'
 
   ),
