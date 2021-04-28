@@ -153,7 +153,7 @@ const char code_to_name[60] = {
     '#', ';', '\'', '`', ',', '.', '/', ' ', ' ', ' '};
 
 void set_keylog(uint16_t keycode, keyrecord_t *record) {
-  char name = ' '
+  char name = ' ';
     if ((keycode >= QK_MOD_TAP && keycode <= QK_MOD_TAP_MAX) ||
         (keycode >= QK_LAYER_TAP && keycode <= QK_LAYER_TAP_MAX)) { keycode = keycode & 0xFF; }
   if (keycode < 60) {
