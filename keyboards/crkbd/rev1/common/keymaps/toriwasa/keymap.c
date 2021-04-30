@@ -35,7 +35,6 @@ enum layer_number {
 #define KC_DELF LT(_FN, KC_DEL)
 #define LOWER_M LT(_LOWER, JP_MHEN)
 #define RAISE_H LT(_RAISE, JP_HENK)
-#define SFTSPC SFT_T(KC_SPC)
 
 // Move Virtual Desktop to Left/Right
 #define VD_LEFT C(G(KC_LEFT))
@@ -53,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT, LOWER_M, SFTSPC,     KC_ENT, RAISE_H,  KC_LGUI
+                                          KC_LALT, LOWER_M, KC_SPC,     KC_ENT, RAISE_H,  KC_LGUI
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -116,9 +115,10 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 #define L_BASE 0
-#define L_LOWER 2
-#define L_RAISE 4
-#define L_ADJUST 8
+#define L_LOWER (1 << 1)
+#define L_RAISE (1 << 2)
+#define L_NUMBER (1 << 3)
+#define L_FN (1 << 4)
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
@@ -132,11 +132,11 @@ void oled_render_layer_state(void) {
         case L_RAISE:
             oled_write_ln_P(PSTR("Raise"), false);
             break;
-        case L_ADJUST:
-        case L_ADJUST|L_LOWER:
-        case L_ADJUST|L_RAISE:
-        case L_ADJUST|L_LOWER|L_RAISE:
-            oled_write_ln_P(PSTR("Adjust"), false);
+        case L_NUMBER:
+            oled_write_ln_P(PSTR("Number"), false);
+            break;
+        case L_FN:
+            oled_write_ln_P(PSTR("Fn"), false);
             break;
     }
 }
